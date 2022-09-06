@@ -1,6 +1,6 @@
 # Neko-Ansible
 
-Running a [Neko]() instance can be expensive due to the high spec demand of running a whole desktop, browser && streaming all of that data to remote peers. Thankfully, here's your solution.
+Running a [Neko](https://github.com/m1k1o/neko) instance can be expensive due to the high spec demand of running a whole desktop, browser && streaming all of that data to remote peers. Thankfully, here's your solution.
 
 Neko-Ansible lets you setup a Neko instance quick && easy, meaning you get more time actually running neko and less time setting it up!
 
