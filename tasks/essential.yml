@@ -1,0 +1,14 @@
+---
+- name: Upgrade Packages
+  apt:
+    update_cache: yes
+    upgrade: full
+
+- name: Install required software
+  package:
+    name:
+      - nginx
+      - fail2ban
+      - python3-certbot-nginx
+      - docker
+      - docker-compose

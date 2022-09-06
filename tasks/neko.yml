@@ -1,0 +1,11 @@
+---
+- name: Copy docker-compose file
+  template:
+    src: templates/neko-docker.yaml
+    dest: /root/docker-compose.yaml
+
+- name: Build & start neko
+  command:
+    cmd: docker-compose up -d
+    chdir: /root
+  become: yes

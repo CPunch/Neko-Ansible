@@ -1,0 +1,30 @@
+---
+- name: Remove default nginx config
+  file:
+    name: /etc/nginx/sites-enabled
+    state: absent
+
+- name: Restore sites-enabled
+  file:
+    name: /etc/nginx/sites-enabled
+    state: directory
+
+- name: Install system nginx config
+  copy:
+    src: static/nginx/nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Install nginx config for neko
+  template:
+    src: templates/nginx/neko.conf
+    dest: /etc/nginx/conf.d/neko.conf
+    force: yes
+
+# certbot is a life saver. thank you certbot devs!
+- name: Setup certbot
+  shell: "certbot --nginx --non-interactive --agree-tos -m {{ contact_email }} -d {{ domain }}"
+
+- name: Start nginx to activate site
+  service:
+    name: nginx
+    state: restarted

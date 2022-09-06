@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: yes
+
+  vars_prompt:
+    - name: domain
+      prompt: domain name pointing to the vps
+      private: no
+
+    - name: contact_email
+      prompt: contact email for domain
+      private: no
+
+    - name: neko_userpassword
+      prompt: neko password (for users)
+      private: no
+
+    - name: neko_adminpassword
+      prompt: neko password (for admins)
+      private: yes
+
+  tasks:
+    - import_tasks: tasks/essential.yml
+    - import_tasks: tasks/firewall.yml
+    - import_tasks: tasks/neko.yml
+    - import_tasks: tasks/nginx.yml
